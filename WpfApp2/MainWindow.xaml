@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Wpf.CartesianChart.PointShapeLine.ReadExceleAndPrintGraphic"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <TabControl x:Name="graphics">
+        <TabItem x:Name="baseGraphic">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Height="10" Width="10" Fill="Black" />
+                    <TextBlock Margin="3">Простой График</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <lvc:CartesianChart Series="{Binding SeriesBase}" LegendLocation="Right" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="d Зр" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Время" Labels="{Binding XLable}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem x:Name="deltaGraphic">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Height="10" Width="10" Fill="Black" />
+                    <TextBlock Margin="3">Разница между зрачками</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <lvc:CartesianChart Series="{Binding SeriesEyesDelta}" LegendLocation="Right" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="d Зр" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Время" Labels="{Binding XLable}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem x:Name="BoxPlot">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Height="10" Width="10" Fill="Black" />
+                    <TextBlock Margin="3">Ящик с усами</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <lvc:CartesianChart Grid.Row="2" Series="{Binding SeriesBoxPlot}">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Labels="{Binding XLable}"/>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+            </TabItem.Content>
+        </TabItem>
+    </TabControl>
+
+    <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Name="MetricsDataGrid" Margin="0,0,5,0"/>
+
+        <Button Grid.Column="1" VerticalAlignment="Top"
+            Padding="10,5" Click="Button_Click" HorizontalAlignment="Left" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap"
+                   Text="Загрузить таблицу"/>
+        </Button>-->
+
+</UserControl>
