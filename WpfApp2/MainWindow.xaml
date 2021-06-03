@@ -4,13 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d" Height="507" Width="827">
     <TabControl x:Name="graphics">
         <TabItem x:Name="baseGraphic">
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
-                    <Ellipse Height="10" Width="10" Fill="Black" />
+                    <Rectangle Height="10" Width="10" Fill="Black" />
                     <TextBlock Margin="3">Простой График</TextBlock>
                 </StackPanel>
             </TabItem.Header>
@@ -51,26 +50,18 @@
                 </StackPanel>
             </TabItem.Header>
             <TabItem.Content>
-                <lvc:CartesianChart Grid.Row="2" Series="{Binding SeriesBoxPlot}">
-                    <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Labels="{Binding XLable}"/>
-                    </lvc:CartesianChart.AxisX>
-                </lvc:CartesianChart>
+                <Grid>
+                    <TextBox Name="Min_TextBox" Height="50" Margin="0,13,337,410" TextChanged="Min_TextBox_TextChanged" BorderThickness="2" HorizontalAlignment="Right" Width="50"/>
+                    <TextBox Name="Max_TextBox" Height="50" Width="50" Margin="0,13,268,410" TextChanged="Max_TextBox_TextChanged" HorizontalAlignment="Right"/>
+
+                    <lvc:CartesianChart Series="{Binding SeriesBoxPlot}" Margin="0,63,0,0">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Labels="{Binding XLable}"/>
+                        </lvc:CartesianChart.AxisX>
+                    </lvc:CartesianChart>
+                </Grid>
             </TabItem.Content>
         </TabItem>
     </TabControl>
-
-    <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="100"/>
-        </Grid.ColumnDefinitions>
-
-        <DataGrid Name="MetricsDataGrid" Margin="0,0,5,0"/>
-
-        <Button Grid.Column="1" VerticalAlignment="Top"
-            Padding="10,5" Click="Button_Click" HorizontalAlignment="Left" Width="100">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap"
-                   Text="Загрузить таблицу"/>
-        </Button>-->
 
 </UserControl>
